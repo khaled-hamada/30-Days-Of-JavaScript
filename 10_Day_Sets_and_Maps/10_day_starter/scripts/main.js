@@ -1,2 +1,7 @@
-console.log(countries)
-alert('Open the console and check if the countries has been loaded')
+
+const sumAllNums = (...args) => {
+  console.log(args)
+}
+
+sumAllNums(1, 2, 3,4,5)
+

@@ -1,2 +1,4 @@
-console.log(countries)
-alert('Open the console and check if the countries has been loaded')
+let square = 2 * 2
+console.log(square)
+
+console.log("Hello, world")
