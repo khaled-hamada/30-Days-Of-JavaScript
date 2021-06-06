@@ -1,7 +1,17 @@
+class Man{
+   sayHello(){
+        console.log("hello world from class man parent of Person which is a parent of Student")
+   }
+}
 
 
-class Person {
-  constructor(firstName, lastName, age, country, city) {
+class Person extends Man  {
+  constructor( firstName = 'Asabeneh',
+    lastName = 'Yetayeh',
+    age = 250,
+    country = 'Finland',
+    city = 'Helsinki') {
+    super()
     this.firstName = firstName
     this.lastName = lastName
     this.age = age
@@ -26,6 +36,9 @@ class Person {
   set setSkill(skill) {
     this.skills.push(skill)
   }
+  #iAmPrivate(){
+      return "i am private"
+  }
   getPersonInfo() {
     let fullName = this.getFullName()
     let skills =
@@ -36,22 +49,42 @@ class Person {
     let formattedSkills = skills ? `He knows ${skills}` : ''
 
     let info = `${fullName} is ${this.age}. He lives ${this.city}, ${this.country}. ${formattedSkills}`
-    console.log(this)
     return info
   }
   static favoriteSkill() {
     const skills = ['HTML', 'CSS', 'JS', 'React', 'Python', 'Node']
     const index = Math.floor(Math.random() * skills.length)
-    console.log('hi')
     return skills[index]
+  }
+  static showDateTime() {
+    let now = new Date()
+    let year = now.getFullYear()
+    let month = now.getMonth() + 1
+    if (month < 10)
+        month = '0' + month
+    let date = now.getDate()
+    if (date < 10)
+        date = '0' + date
+    let hours = now.getHours()
+    let minutes = now.getMinutes()
+    if (hours < 10) {
+      hours = '0' + hours
+    }
+    if (minutes < 10) {
+      minutes = '0' + minutes
+    }
+
+    let dateMonthYear = date + ' / ' + month + ' / ' + year
+    let time = hours + ':' + minutes
+    let fullTime = dateMonthYear + ' - ' + time
+    
+    return fullTime
   }
 }
 
-console.log(Person.favoriteSkill())
-
 class Student extends Person {
   constructor(firstName, lastName, age, country, city, gender) {
-    super(firstName, lastName, age, country, city)
+    super()
     this.gender = gender
   }
 
@@ -69,37 +102,24 @@ class Student extends Person {
     let pronoun = this.gender == 'Male' ? 'He' : 'She'
 
     let info = `${fullName} is ${this.age}. ${pronoun} lives in ${this.city}, ${this.country}. ${formattedSkills}`
-    console.log(this)
     return info
   }
 }
 
 const s1 = new Student(
-  'Asabeneh',
-  'Yetayeh',
-  250,
-  'Finland',
-  'Helsinki',
-  'Male'
+  
+  gender = 'Male',
 )
-const s2 = new Student('Lidiya', 'Tekle', 28, 'Finland', 'Helsinki', 'Female')
+// const s2 = new Student('Lidiya', 'Tekle', 28, 'Finland', 'Helsinki', 'Female')
 s1.setScore = 1
 s1.setSkill = 'HTML'
 s1.setSkill = 'CSS'
 s1.setSkill = 'JavaScript'
 
-s2.setScore = 1
-s2.setSkill = 'Planning'
-s2.setSkill = 'Managing'
-s2.setSkill = 'Organizing'
 
-console.log(s1)
-console.log(s2)
+// console.log(s1)
 
+console.log(s1.sayHello())
 console.log(s1.saySomething())
 console.log(s1.getFullName())
 console.log(s1.getPersonInfo())
-
-console.log(s2.saySomething())
-console.log(s2.getFullName())
-console.log(s2.getPersonInfo())
