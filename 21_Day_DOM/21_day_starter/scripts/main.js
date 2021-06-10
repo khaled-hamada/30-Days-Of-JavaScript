@@ -25,13 +25,13 @@ const listItems = document.querySelectorAll('li')
 listItems.forEach((element , idx) => {
     //check for done 
     element.style.margin = '3px'
-    if(element.textContent.toLowerCase().includes('done')){
+    if(element.textContent.toLowerCase().includes('done'.toLowerCase())){
         element.style.backgroundColor = 'green'
     }
-    else if(element.textContent.toLowerCase().includes('ongoing')){
+    else if(element.textContent.toLowerCase().includes('ongoing'.toLowerCase())){
         element.style.backgroundColor = 'yellow'
     }
-    if(element.textContent.toLowerCase().includes('coming')){
+    if(element.textContent.toLowerCase().includes('coming'.toLowerCase())){
         element.style.backgroundColor = 'red'
     }
 })
